@@ -9,20 +9,20 @@
    <title>The way - A página que guia você</title>
   
   <!-- Importação do CSS -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/css/animate.min.css" rel="stylesheet">
-  <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-  <link href="assets/css/lightbox.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
-  <link id="css-preset" href="assets/css/presets/preset1.css" rel="stylesheet">
-  <link href="assets/css/responsive.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="assets/css/estilotw.css">
+  <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../assets/css/animate.min.css" rel="stylesheet">
+  <link href="../../assets/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../../assets/css/lightbox.css" rel="stylesheet">
+  <link href="../../assets/css/main.css" rel="stylesheet">
+  <link id="css-preset" href="../../assets/css/presets/preset1.css" rel="stylesheet">
+  <link href="../../assets/css/responsive.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../../assets/css/estilotw.css">
   <link rel="shortcut icon" href="../../assets/images/logo.png">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
 
  
-    <script src="assets/js/html5shiv.js"></script>
-    <script src="assets/js/respond.min.js"></script>
+    <script src="../../assets/js/html5shiv.js"></script>
+    <script src="../../assets/js/respond.min.js"></script>
 
 </head><!--/head(Cabeça)-->
 <body>
@@ -39,21 +39,21 @@
           <div class="caption">
             <h1 class="animated fadeInLeftBig">Bem vindo a <span>The way</span></h1>
             <p class="animated fadeInRightBig">Cadastre sua transportadora ou seu caminhão</p>
-            <a data-scroll class="btn btn-start animated fadeInUpBig" href="app/view/menuDeCadastros.html">Cadastre-se</a>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="../../app/view/menuDeCadastros.html">Cadastre-se</a>
           </div>
         </div>
         <div class="item" style="background-image: url(assets/images/slider/2.jpg)">
           <div class="caption">
             <h1 class="animated fadeInLeftBig">Bem vindo a <span>The way</span></h1>
             <p class="animated fadeInRightBig">Melhore o seu desenpenho com nosso site</p>
-            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Comece agora</a>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Conheça</a>
           </div>
         </div>
         <div class="item" style="background-image: url(assets/images/slider/3.jpg)">
           <div class="caption">
             <h1 class="animated fadeInLeftBig">Nós estamos <span>na Estrada com você</span></h1>
             <p class="animated fadeInRightBig">Já dirige? Entre no The Way, e começe novas viagens agora!</p>
-            <a data-scroll class="btn btn-start animated fadeInUpBig" href="app/view/loginT.html">Entrar</a>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="../../app/view/loginT.html">Entrar</a>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="../../index.html">
             <h1><img class="img-responsive" src="../../assets/images/T.png" alt="logo"></h1>
           </a>                    
         </div>
