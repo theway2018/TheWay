@@ -2,11 +2,11 @@
 /**
  * Created by PhpStorm.
  * User: aluno
- * Date: 13/07/18
- * Time: 13:32
+ * Date: 15/08/18
+ * Time: 14:59
  */
 
-class Modelo {
+class tipo_produto {
 
     public $cod_modelo;
     public $nome;
@@ -19,4 +19,4 @@ class Modelo {
         $this->cod_montadora = $cod_montadora;
     }
 
-}
+ }

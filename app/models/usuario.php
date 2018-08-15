@@ -15,12 +15,12 @@ class usuario
     public function __construct($nome, $sobrenome, $email, $telefone, $login, $senha, $id=null)
     {
 
-        $this->id = $id;
-        $this->nome = $nome;
+        $this->id        = $id;
+        $this->nome      = $nome;
         $this->sobrenome = $sobrenome;
-        $this->email = $email;
-        $this->telefone = $telefone;
-        $this->login = $login;
-        $this->senha = $senha;
+        $this->email     = $email;
+        $this->telefone  = $telefone;
+        $this->login     = $login;
+        $this->senha     = $senha;
     }
 }

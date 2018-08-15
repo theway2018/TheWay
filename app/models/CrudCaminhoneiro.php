@@ -4,7 +4,7 @@
 
  require_once "caminhoneiro.php";
 
-class Crudusuario{
+class CrudCaminhoneiro{
 
     private $conexao;
     public  $caminhoneiro;
@@ -14,51 +14,60 @@ class Crudusuario{
         $this->conexao = Conexao::getConexao();
     }
 
-    //Cadastra o usuario
-    public function salvar(usuario $caminhoneiro){
+    //Cadastra o usuario Caminhoneiro
+    public function salvar ($caminhoneiro){
 
         $sql = "INSERT INTO caminhoneiro (nome, email, telefone, senha, rg, cpf, num_antt, num_cnh, categoria_cnh, cod_usuario) 
-                VALUES ({$caminhoneiro->nome}, {$caminhoneiro->sobrenome}, {$caminhoneiro->email}, {$caminhoneiro->telefone}, {$caminhoneiro->senha}, {$caminhoneiro->rg}, {$caminhoneiro->cpf}, {$caminhoneiro->num_antt}, {$caminhoneiro->num_cnh}, {$caminhoneiro->categoria_cnh})";
+                VALUES ({$caminhoneiro->nome}, {$caminhoneiro->email}, {$caminhoneiro->telefone}, {$caminhoneiro->senha}, {$caminhoneiro->rg}, {$caminhoneiro->cpf}, {$caminhoneiro->num_antt}, {$caminhoneiro->num_cnh}, {$caminhoneiro->categoria_cnh})";
 
         $this->conexao->exec($sql);
     }
 
+    //Busca usuario caminhoneiro
+    public function getusuario (int $cod_usuario){
 
-    //Busca
-    public function getusuario(int $cod_usuario)
-    {
-        $consultausuarios->conexao->query("SELECT * FROM caminhoneiro WHERE cod_usuario = $cod_usuario");
+        $consultausuario->conexao->query("SELECT * FROM caminhoneiro WHERE cod_usuario = $cod_usuario");
         $usuario = $consulta->fetch(PDO::FETCH_ASSOC); //SEMELHANTES JSON ENCODE E DECODE
 
         return new usuario($usuario['nome'], $usuario['email'], $usuario['telefone'], $usuario['senha'], $usuario['rg'], $usuario['cpf'], $usuario['num_cnh']);
     }
 
-    public function getusuarios(){
+    public function getusuarios (){
+
         $consulta = $this->conexao->query("SELECT * FROM caminhoneiro");
-        $arrayusuarios = $consulta->fetchAll($this->caminhoneiroTCH_ASSOC);
+        $arrayusuarios = $consulta->fetchAll($this->caminhoneiro);
 
     //Fabrica de caminhoneiro
         $listausuario = [];
-        foreach ($arrayusuarios as $usuarusuario  $listausuario[] = new usuario($usuarios['nome'], $usuarios['sobrenome'], $usuarios['email'],$usuarios['quantidade_telefone'], $usuarios['cod_usuario']){
+
+        foreach ($arrayusuarios as $usuario ){
+
+            $listausuario[] = new usuario($usuario['nome'], $usuario['email'], $usuario['telefone'], $usuario['senha'], $usuario['rg'], $usuario['cpf'], $usuario['num_cnh']);
+
         }
+
         return $this->caminhoneiro;
     }
 
     //Exclui o usuario
-    public function excluirusuario(int $x)
-    {
-        $this->conexao->exec("DELETE from caminhoneiro where cod_usuario = $x"usuario}
+    public function excluirusuario ($x){
+
+        $this->conexao->exec("DELETE from caminhoneiro where cod_usuario = $x");
+}
 
     //Edita as informações do usuario
-    public function editar($id, $nome, $email, $sobrenome, $telefone)
-    {
-        $this->conexao->exec("UPDATE caminhoneiro SET nome = $nome, email = $email, sobrenome =usuarionome, telefone = $telefone WHERE usuario.cod_usuario = $id; ");
+    public function editar ($nome, $email, $telefone, $senha, $rg, $cpf, $num_cnh){
+
+        $this->conexao->exec("UPDATE caminhoneiro SET nome = $nome, email = $email, telefone = $telefone, senha = $senha, rg = $rg, cpf = $cpf, num_cnh = $num_cnh WHERE caminhoneiro.cod_usuario = $id; ");
     }
 
-    public function login($usuario, $senha){
-        $consultausuarios->conexao->query("SELECT * FROM usuario WHERE cod_usuario = $cod_usuario");
+    //login
+    public function login ($usuario, $senha, $cod_usuario){
+
+        $consultausuarios->conexao->query("SELECT * FROM caminhoneiro WHERE cod_usuario = $cod_usuario");
         $usuario = $consulta->fetch(PDO::FETCH_ASSOC); //SEMELHANTES JSON ENCODE E DECODE
-        return new usuario($usuario['nome'], $usuario['sobrenome'], $usuario['email'], $usuario['cod_usuario']);
+
+        return new usuario($usuario['nome'], $usuario['email'], $usuario['telefone'], $usuario['senha'], $usuario['rg'], $usuario['cpf'], $usuario['num_cnh']);
 
     }
 

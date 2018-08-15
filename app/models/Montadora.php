@@ -6,8 +6,8 @@
  * Time: 13:33
  */
 
-class Montadora
-{
+class Montadora {
+
     public $cod_montadora;
     public $nome;
 
