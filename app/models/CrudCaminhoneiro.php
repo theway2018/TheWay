@@ -4,7 +4,7 @@
 
  require_once "caminhoneiro.php";
 
-class CrudCaminhoneiro{
+class Crudcaminhoneiro{
 
     private $conexao;
     public  $caminhoneiro;
@@ -14,7 +14,7 @@ class CrudCaminhoneiro{
         $this->conexao = Conexao::getConexao();
     }
 
-    //Cadastra o usuario Caminhoneiro
+    //Cadastra o usuario caminhoneiro
     public function salvar ($caminhoneiro){
 
         $sql = "INSERT INTO caminhoneiro (nome, email, telefone, senha, rg, cpf, num_antt, num_cnh, categoria_cnh, cod_usuario) 
@@ -72,6 +72,3 @@ class CrudCaminhoneiro{
     }
 
 }
-
-
-
