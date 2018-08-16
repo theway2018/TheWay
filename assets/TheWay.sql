@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Tempo de geração: 13/08/2018 às 11:04
+-- Generation Time: 16-Ago-2018 às 16:57
 -- Versão do servidor: 5.7.21-0ubuntu0.16.04.1
--- Versão do PHP: 7.0.22-0ubuntu0.16.04.1
+-- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `TheWay`
+-- Database: `TheWay`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `caminhao`
+-- Estrutura da tabela `caminhao`
 --
 
 CREATE TABLE `caminhao` (
@@ -38,10 +38,14 @@ CREATE TABLE `caminhao` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `caminhoneiro`
+-- Estrutura da tabela `caminhoneiro`
 --
 
 CREATE TABLE `caminhoneiro` (
+  `nome` text NOT NULL,
+  `email` varchar(25) NOT NULL,
+  `telefone` varchar(15) NOT NULL,
+  `senha` varchar(25) NOT NULL,
   `rg` int(11) DEFAULT NULL,
   `cpf` int(11) DEFAULT NULL,
   `num_antt` int(11) DEFAULT NULL,
@@ -53,7 +57,7 @@ CREATE TABLE `caminhoneiro` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `carreta`
+-- Estrutura da tabela `carreta`
 --
 
 CREATE TABLE `carreta` (
@@ -66,7 +70,7 @@ CREATE TABLE `carreta` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cidade`
+-- Estrutura da tabela `cidade`
 --
 
 CREATE TABLE `cidade` (
@@ -78,7 +82,7 @@ CREATE TABLE `cidade` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `estado`
+-- Estrutura da tabela `estado`
 --
 
 CREATE TABLE `estado` (
@@ -90,7 +94,7 @@ CREATE TABLE `estado` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `inscricao`
+-- Estrutura da tabela `inscricao`
 --
 
 CREATE TABLE `inscricao` (
@@ -102,7 +106,7 @@ CREATE TABLE `inscricao` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `modelo`
+-- Estrutura da tabela `modelo`
 --
 
 CREATE TABLE `modelo` (
@@ -114,7 +118,7 @@ CREATE TABLE `modelo` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `montadora`
+-- Estrutura da tabela `montadora`
 --
 
 CREATE TABLE `montadora` (
@@ -125,7 +129,7 @@ CREATE TABLE `montadora` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `servico`
+-- Estrutura da tabela `servico`
 --
 
 CREATE TABLE `servico` (
@@ -145,7 +149,7 @@ CREATE TABLE `servico` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `status_servico`
+-- Estrutura da tabela `status_servico`
 --
 
 CREATE TABLE `status_servico` (
@@ -156,7 +160,7 @@ CREATE TABLE `status_servico` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tipo_caminhao`
+-- Estrutura da tabela `tipo_caminhao`
 --
 
 CREATE TABLE `tipo_caminhao` (
@@ -167,7 +171,7 @@ CREATE TABLE `tipo_caminhao` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tipo_produto`
+-- Estrutura da tabela `tipo_produto`
 --
 
 CREATE TABLE `tipo_produto` (
@@ -178,7 +182,7 @@ CREATE TABLE `tipo_produto` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `transportadora`
+-- Estrutura da tabela `transportadora`
 --
 
 CREATE TABLE `transportadora` (
@@ -190,7 +194,7 @@ CREATE TABLE `transportadora` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuario`
+-- Estrutura da tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -203,11 +207,11 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Índices de tabelas apagadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices de tabela `caminhao`
+-- Indexes for table `caminhao`
 --
 ALTER TABLE `caminhao`
   ADD PRIMARY KEY (`cod_caminhao`),
@@ -215,52 +219,52 @@ ALTER TABLE `caminhao`
   ADD KEY `cod_modelo` (`cod_modelo`);
 
 --
--- Índices de tabela `caminhoneiro`
+-- Indexes for table `caminhoneiro`
 --
 ALTER TABLE `caminhoneiro`
   ADD KEY `cod_usuario` (`cod_usuario`);
 
 --
--- Índices de tabela `carreta`
+-- Indexes for table `carreta`
 --
 ALTER TABLE `carreta`
   ADD PRIMARY KEY (`cod_carreta`),
   ADD KEY `cod_produto` (`cod_produto`);
 
 --
--- Índices de tabela `cidade`
+-- Indexes for table `cidade`
 --
 ALTER TABLE `cidade`
   ADD PRIMARY KEY (`cod_cidade`),
   ADD KEY `cod_estado` (`cod_estado`);
 
 --
--- Índices de tabela `estado`
+-- Indexes for table `estado`
 --
 ALTER TABLE `estado`
   ADD PRIMARY KEY (`cod_estado`);
 
 --
--- Índices de tabela `inscricao`
+-- Indexes for table `inscricao`
 --
 ALTER TABLE `inscricao`
   ADD KEY `cod_servico` (`cod_servico`);
 
 --
--- Índices de tabela `modelo`
+-- Indexes for table `modelo`
 --
 ALTER TABLE `modelo`
   ADD PRIMARY KEY (`cod_modelo`),
   ADD KEY `cod_montadora` (`cod_montadora`);
 
 --
--- Índices de tabela `montadora`
+-- Indexes for table `montadora`
 --
 ALTER TABLE `montadora`
   ADD PRIMARY KEY (`cod_montadora`);
 
 --
--- Índices de tabela `servico`
+-- Indexes for table `servico`
 --
 ALTER TABLE `servico`
   ADD PRIMARY KEY (`cod_servico`),
@@ -269,79 +273,79 @@ ALTER TABLE `servico`
   ADD KEY `cod_produto` (`cod_produto`);
 
 --
--- Índices de tabela `status_servico`
+-- Indexes for table `status_servico`
 --
 ALTER TABLE `status_servico`
   ADD PRIMARY KEY (`cod_status`);
 
 --
--- Índices de tabela `tipo_caminhao`
+-- Indexes for table `tipo_caminhao`
 --
 ALTER TABLE `tipo_caminhao`
   ADD PRIMARY KEY (`cod_tipo`);
 
 --
--- Índices de tabela `tipo_produto`
+-- Indexes for table `tipo_produto`
 --
 ALTER TABLE `tipo_produto`
   ADD PRIMARY KEY (`cod_produto`);
 
 --
--- Índices de tabela `transportadora`
+-- Indexes for table `transportadora`
 --
 ALTER TABLE `transportadora`
   ADD KEY `cod_usuario` (`cod_usuario`);
 
 --
--- Índices de tabela `usuario`
+-- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`cod_usuario`),
   ADD KEY `cod_cidade` (`CEP`);
 
 --
--- Restrições para dumps de tabelas
+-- Constraints for dumped tables
 --
 
 --
--- Restrições para tabelas `caminhao`
+-- Limitadores para a tabela `caminhao`
 --
 ALTER TABLE `caminhao`
   ADD CONSTRAINT `caminhao_ibfk_1` FOREIGN KEY (`cod_tipo`) REFERENCES `tipo_caminhao` (`cod_tipo`),
   ADD CONSTRAINT `caminhao_ibfk_2` FOREIGN KEY (`cod_modelo`) REFERENCES `modelo` (`cod_modelo`);
 
 --
--- Restrições para tabelas `caminhoneiro`
+-- Limitadores para a tabela `caminhoneiro`
 --
 ALTER TABLE `caminhoneiro`
   ADD CONSTRAINT `caminhoneiro_ibfk_1` FOREIGN KEY (`cod_usuario`) REFERENCES `usuario` (`cod_usuario`);
 
 --
--- Restrições para tabelas `carreta`
+-- Limitadores para a tabela `carreta`
 --
 ALTER TABLE `carreta`
   ADD CONSTRAINT `carreta_ibfk_1` FOREIGN KEY (`cod_produto`) REFERENCES `tipo_produto` (`cod_produto`);
 
 --
--- Restrições para tabelas `cidade`
+-- Limitadores para a tabela `cidade`
 --
 ALTER TABLE `cidade`
   ADD CONSTRAINT `cidade_ibfk_1` FOREIGN KEY (`cod_estado`) REFERENCES `estado` (`cod_estado`);
 
 --
--- Restrições para tabelas `inscricao`
+-- Limitadores para a tabela `inscricao`
 --
 ALTER TABLE `inscricao`
   ADD CONSTRAINT `inscricao_ibfk_1` FOREIGN KEY (`cod_servico`) REFERENCES `servico` (`cod_servico`);
 
 --
--- Restrições para tabelas `modelo`
+-- Limitadores para a tabela `modelo`
 --
 ALTER TABLE `modelo`
   ADD CONSTRAINT `modelo_ibfk_1` FOREIGN KEY (`cod_montadora`) REFERENCES `montadora` (`cod_montadora`);
 
 --
--- Restrições para tabelas `servico`
+-- Limitadores para a tabela `servico`
 --
 ALTER TABLE `servico`
   ADD CONSTRAINT `servico_ibfk_1` FOREIGN KEY (`cod_status`) REFERENCES `status_servico` (`cod_status`),
@@ -349,15 +353,16 @@ ALTER TABLE `servico`
   ADD CONSTRAINT `servico_ibfk_3` FOREIGN KEY (`cod_produto`) REFERENCES `tipo_produto` (`cod_produto`);
 
 --
--- Restrições para tabelas `transportadora`
+-- Limitadores para a tabela `transportadora`
 --
 ALTER TABLE `transportadora`
   ADD CONSTRAINT `transportadora_ibfk_1` FOREIGN KEY (`cod_usuario`) REFERENCES `usuario` (`cod_usuario`);
 
 --
--- Restrições para tabelas `usuario`
+-- Limitadores para a tabela `usuario`
 --
 ALTER TABLE `usuario`
+  ADD CONSTRAINT `fk_l_id` FOREIGN KEY (`cod_usuario`) REFERENCES `caminhoneiro` (`cod_usuario`),
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`CEP`) REFERENCES `cidade` (`cod_cidade`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
