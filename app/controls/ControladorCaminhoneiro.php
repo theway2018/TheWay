@@ -19,16 +19,16 @@ if (!isset($_GET['acao'])) {
 
 function cadastrar_caminhoneiro(){
 /*    var_dump($_POST);*/
-    $caminhoneiro = new caminhoneiro ($_POST['nome'], $_POST['email'], $_POST['telefone'], $_POST['senha'], $_POST['rg'], $_POST['cpf'], $_POST['num_antt'], $_POST['num_cnh'], $_POST['categoria_cnh'], $_POST['cod_usuario']);
-    $crudc_c = new CrudCaminhoneiro();
+    $caminhoneiro = new caminhoneiro ($_POST['nome'], $_POST['email'], $_POST['telefone'], $_POST['senha'], $_POST['rg'], $_POST['cpf'], $_POST['num_antt'], $_POST['num_cnh'], $_POST['categoria_cnh']);
+    $crudc_c = new Crudcaminhoneiro();
     $crudc_c->salvar($caminhoneiro);
 
-    header('Location: ../index.html');
+    header('Location: ../perfilcaminhoneiro.html');
 }
 
 function listar_caminhoneiros(){
 
-    $crud = new CrudCaminhoneiro();
+    $crud = new Crudcaminhoneiro();
     $listacaminhoneiros = $crud->getusuarios();
 
     include '../view/cabecalho.php';
@@ -37,16 +37,16 @@ function listar_caminhoneiros(){
 
 function listar_caminhoneiro($id){
 
-    $crud = new CrudCaminhoneiro();
+    $crud = new Crudcaminhoneiro();
     $listacaminhoneiro = $crud->getusuario($id);
 
     include '../view/cabecalho.php';
-    include '../view/perfilCaminhoneiro.html';
+    include '../view/perfilcaminhoneiro.html';
 }
 
 function excluirusuario($id){
 
-    $crud = new CrudCaminhoneiro();
+    $crud = new Crudcaminhoneiro();
     $listacaminhoneiro = $crud->excluirusuario($id); //////////////////////////////////////////////// Esta com erro!!!
 
     include '../view/cabecalho.php';
@@ -55,7 +55,7 @@ function excluirusuario($id){
 
 function editar_caminhoneiro($id){
 
-    $crud = new CrudCaminhoneiro();
+    $crud = new Crudcaminhoneiro();
     $listacaminhoneiro = $crud->getusuario($id); ///////////////////////////////////////////////////////// Esta com erro!!!
 
     include '../view/cabecalho.html';
@@ -65,7 +65,7 @@ function editar_caminhoneiro($id){
 function editar2_caminhoneiro($caminhoneiro){
 
     $caminhoneiro = new caminhoneiro ($_POST['nome'], $_POST['email'], $_POST['telefone'], $_POST['senha'], $_POST['rg'], $_POST['cpf'], $_POST['num_antt'], $_POST['num_cnh'], $_POST['categoria_cnh'], $_POST['cod_usuario']);
-    $crud = new CrudCaminhoneiro();
+    $crud = new Crudcaminhoneiro();
     $listacaminhoneiro = $crud->editar($caminhoneiro); ///////////////////////////////////////////// Esta com erro!!!
 
     echo $caminhoneiro->cod_usuario;
@@ -83,7 +83,7 @@ function verificar_caminhoneiro(){
     $login = $_POST['login'];
     $senha = $_POST['senha'];
 
-    $crud = new CrudCaminhoneiro();
+    $crud = new Crudcaminhoneiro();
     $listacaminhoneiros = $crud->getusuarios(); //////////////////////////////////////////////////// Esta com erro!!!
     $usuario_existe = false;
 
@@ -104,7 +104,7 @@ function verificar_caminhoneiro(){
     }
 
     $usuario_existe = false;
-    $crud = new crud_Empresa(); ////////////////////////////////////////////////// Colocar o crud da transportadora!!!
+    $crud = new crud_Empresa(); ////////////////////////////////////////////////// Colocar o crud da caminhoneiro!!!
     $lista_empresas = $crud->getAll();
 
     foreach ($lista_empresas as $lista_empresa) {

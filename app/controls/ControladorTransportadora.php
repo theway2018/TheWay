@@ -3,7 +3,7 @@
 
 require_once "../models/caminhoneiro.php";
 
-require_once "../models/CrudCaminhoneiro.php";
+require_once "../models/Crudcaminhoneiro.php";
 //sessao
   if (!isset($_SESSION)){
       session_start();
