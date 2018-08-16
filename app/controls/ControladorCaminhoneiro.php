@@ -7,112 +7,112 @@ require_once "../models/caminhoneiro.php";
 require_once "../models/CrudCaminhoneiro.php";
 
 //inicia a sessão
-  if (!isset($_SESSION)){
-      session_start();
+if (!isset($_SESSION)) {
+    session_start();
 }
 
-  if (!isset($_GET['acao'])) {
-      $_GET['acao'] = null;
+if (!isset($_GET['acao'])) {
+    $_GET['acao'] = null;
 }
 
 //Substitui Usuario por caminhoneiro em tudo
 
 function cadastrar_caminhoneiro(){
-
+/*    var_dump($_POST);*/
     $caminhoneiro = new caminhoneiro ($_POST['nome'], $_POST['email'], $_POST['telefone'], $_POST['senha'], $_POST['rg'], $_POST['cpf'], $_POST['num_antt'], $_POST['num_cnh'], $_POST['categoria_cnh'], $_POST['cod_usuario']);
-     $crudc_c = new CrudCaminhoneiro();
-      $crudc_c->salvar($caminhoneiro);
+    $crudc_c = new CrudCaminhoneiro();
+    $crudc_c->salvar($caminhoneiro);
 
-      header('Location: ../view/CadastroC.html');
+    header('Location: ../index.html');
 }
 
 function listar_caminhoneiros(){
 
     $crud = new CrudCaminhoneiro();
-     $listacaminhoneiros = $crud->getusuarios();
+    $listacaminhoneiros = $crud->getusuarios();
 
-      include '../view/cabecalho.php';
-        require_once __DIR__ . "/../view/perfilCaminhoneiro.html";
+    include '../view/cabecalho.php';
+    require_once __DIR__ . "/../view/perfilCaminhoneiro.html";
 }
 
 function listar_caminhoneiro($id){
 
-     $crud = new CrudCaminhoneiro();
+    $crud = new CrudCaminhoneiro();
     $listacaminhoneiro = $crud->getusuario($id);
 
-       include '../view/cabecalho.php';
-      include '../view/perfilCaminhoneiro.html';
+    include '../view/cabecalho.php';
+    include '../view/perfilCaminhoneiro.html';
 }
 
 function excluirusuario($id){
 
     $crud = new CrudCaminhoneiro();
-     $listacaminhoneiro = $crud->excluirusuario($id); //////////////////////////////////////////////// Esta com erro!!!
+    $listacaminhoneiro = $crud->excluirusuario($id); //////////////////////////////////////////////// Esta com erro!!!
 
-      include '../view/cabecalho.php';
-       include '../view/perfilCaminhoneiro.html';
+    include '../view/cabecalho.php';
+    include '../view/perfilCaminhoneiro.html';
 }
 
 function editar_caminhoneiro($id){
 
-     $crud = new CrudCaminhoneiro();
-    $listacaminhoneiro = $crud->editar($id); ///////////////////////////////////////////////////////// Esta com erro!!!
+    $crud = new CrudCaminhoneiro();
+    $listacaminhoneiro = $crud->getusuario($id); ///////////////////////////////////////////////////////// Esta com erro!!!
 
-       include '../view/cabecalho.html';
-      include '../view/caminhoneiro_edicao.php'; /////////////////////////////////////////////////////////// Arrumar!!!
+    include '../view/cabecalho.html';
+    include '../view/caminhoneiro_edicao.php'; /////////////////////////////////////////////////////////// Pagina formulario !!!
 }
 
 function editar2_caminhoneiro($caminhoneiro){
 
     $caminhoneiro = new caminhoneiro ($_POST['nome'], $_POST['email'], $_POST['telefone'], $_POST['senha'], $_POST['rg'], $_POST['cpf'], $_POST['num_antt'], $_POST['num_cnh'], $_POST['categoria_cnh'], $_POST['cod_usuario']);
-     $crud = new CrudCaminhoneiro();
-      $listacaminhoneiro = $crud->editar($caminhoneiro); ///////////////////////////////////////////// Esta com erro!!!
+    $crud = new CrudCaminhoneiro();
+    $listacaminhoneiro = $crud->editar($caminhoneiro); ///////////////////////////////////////////// Esta com erro!!!
 
-     echo $caminhoneiro->cod_usuario;
+    echo $caminhoneiro->cod_usuario;
 
-       include '../view/cabecalho.php';
-      include '../view/perfilCaminhoneiro.html';
+    include '../view/cabecalho.php';
+    include '../view/perfilCaminhoneiro.html';
 }
 
 function verificar_caminhoneiro(){
 
-  session_start();
-   session_destroy();
+    session_start();
+    session_destroy();
     session_start();
 
-     $login = $_POST['login'];
+    $login = $_POST['login'];
     $senha = $_POST['senha'];
 
-     $crud = new CrudCaminhoneiro();
-      $listacaminhoneiros = $crud->getusuarios(); //////////////////////////////////////////////////// Esta com erro!!!
-       $usuario_existe = false;
+    $crud = new CrudCaminhoneiro();
+    $listacaminhoneiros = $crud->getusuarios(); //////////////////////////////////////////////////// Esta com erro!!!
+    $usuario_existe = false;
 
     foreach ($listacaminhoneiros as $listacaminhoneiro) {
         //colar aqui o if
         if ($login == $listacaminhoneiro['login'] AND $senha == $listacaminhoneiro['senha']) {
 
             $usuario_existe = true;
-             $_SESSION = $listacaminhoneiro;
-              $_SESSION['usuario_online'] = true;
+            $_SESSION = $listacaminhoneiro;
+            $_SESSION['usuario_online'] = true;
         }
     }
 
     if ($usuario_existe == true) {
 
-         include '../view/cabecalho.html';
-        include '../view/funcional.php'; //////////////////////////////////////////////////// Colocar tela de editar!!!
+        include '../view/cabecalho.html';
+        include '../view/perfilCaminhoneiro.html'; //////////////////////////////////////////////////// Colocar tela de editar!!!
     }
 
     $usuario_existe = false;
-     $crud = new crud_Empresa(); ////////////////////////////////////////////////// Colocar o crud da transportadora!!!
-      $lista_empresas = $crud->getAll();
+    $crud = new crud_Empresa(); ////////////////////////////////////////////////// Colocar o crud da transportadora!!!
+    $lista_empresas = $crud->getAll();
 
     foreach ($lista_empresas as $lista_empresa) {
 
         if ($login == $lista_empresa['login'] AND $senha == $lista_empresa['senha']) {
 
-              $usuario_existe = true;
-             $_SESSION = $lista_empresa;
+            $usuario_existe = true;
+            $_SESSION = $lista_empresa;
             $_SESSION['usuario_online'] = true;
         }
     }
@@ -120,7 +120,7 @@ function verificar_caminhoneiro(){
     if ($usuario_existe == true) {
 
         include '../view/cabecalho.php';
-         include __DIR__ . '/../view/perfilCaminhoneiro.html';
+        include __DIR__ . '/../view/perfilCaminhoneiro.html';
 
     } else {
 
@@ -132,11 +132,11 @@ function verificar_caminhoneiro(){
 if (isset($_GET['acao'])) {
     $acao = $_GET['acao'];
 
-  } else {
+} else {
 
     header('Location: ../../index.php');
 
-  }
+}
 
 //casos
 switch ($acao) { //////////////////////////////////////////////////////////////////////////////////////////// Checar!!!
