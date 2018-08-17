@@ -41,7 +41,7 @@ function listar_caminhoneiro($id){
     $listacaminhoneiro = $crud->getusuario($id);
 
     include '../view/cabecalho.php';
-    include '../view/perfilcaminhoneiro.html';
+    include '../view/perfilCaminhoneiro.html';
 }
 
 function excluirusuario($id){
@@ -59,7 +59,7 @@ function editar_caminhoneiro($id){
     $listacaminhoneiro = $crud->getusuario($id); ///////////////////////////////////////////////////////// Esta com erro!!!
 
     include '../view/cabecalho.html';
-    include '../view/caminhoneiro_edicao.php'; /////////////////////////////////////////////////////////// Pagina formulario !!!
+    include '../view/caminhoneiro_edicao'; /////////////////////////////////////////////////////////// Pagina formulario !!!
 }
 
 function editar2_caminhoneiro($caminhoneiro){
