@@ -15,10 +15,10 @@ class Crudtransportadora{
     }
 
     //Cadastra o usuario transportadora
-    public function salvar ($transportadora){
-
-        $sql = "INSERT INTO transportadora (razao_socail, cnpj, cod_usuario) 
-                VALUES ({$transportadora->razao}, {$transportadora->cnpj})";
+    public function salvar (transportadora $transportadora){
+        var_dump($transportadora);
+        $sql = "INSERT INTO transportadora (cnpj, razao_social) 
+                VALUES ('$transportadora->cnpj', '$transportadora->razao_social')";
 
         $this->conexao->exec($sql);
     }
@@ -29,7 +29,7 @@ class Crudtransportadora{
         $consultausuario->conexao->query("SELECT * FROM transportadora WHERE cod_usuario = $cod_usuario");
         $usuario = $consulta->fetch(PDO::FETCH_ASSOC); //SEMELHANTES JSON ENCODE E DECODE
 
-        return new usuario($usuario['nome'], $usuario['email'], $usuario['telefone'], $usuario['senha'], $usuario['rg'], $usuario['cpf'], $usuario['num_cnh']);
+        return new transportadora($usuario['cnpj'], $usuario['razao_social']);
     }
 
     public function getusuarios (){
@@ -56,9 +56,9 @@ class Crudtransportadora{
     }
 
     //Edita as informações do usuario
-    public function editar ($nome, $email, $telefone, $senha, $rg, $cpf, $num_cnh){
+    public function editar ($cnpj, $razao_social){
 
-        $this->conexao->exec("UPDATE transportadora SET nome = $nome, email = $email, telefone = $telefone, senha = $senha, rg = $rg, cpf = $cpf, num_cnh = $num_cnh WHERE transportadora.cod_usuario = $id; ");
+        $this->conexao->exec("UPDATE transportadora SET cnpj = $cnpj, razao_social = $razao_social WHERE transportadora.cod_usuario = $id; ");
     }
 
     //login

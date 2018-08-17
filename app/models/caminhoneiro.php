@@ -16,9 +16,8 @@ class caminhoneiro{
     public $num_cnh;
     public $categoria_cnh;
 
-    public function __construct($nome, $email, $telefone, $senha, $rg, $cpf, $num_antt, $num_cnh, $categoria_cnh, $cod_usuario){
+    public function __construct($nome, $email, $telefone, $senha, $rg, $cpf, $num_antt, $num_cnh, $categoria_cnh, $cod_usuario = null){
 
-        $this->cod_usuario   = $cod_usuario;
         $this->nome          = $nome;
         $this->email         = $email;
         $this->telefone      = $telefone;
@@ -28,5 +27,6 @@ class caminhoneiro{
         $this->num_antt      = $num_antt;
         $this->num_cnh       = $num_cnh;
         $this->categoria_cnh = $categoria_cnh;
+        $this->cod_usuario   = $cod_usuario;
     }
 }
